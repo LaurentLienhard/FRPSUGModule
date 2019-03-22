@@ -53,7 +53,7 @@ Describe 'Module' {
         It '[RESSOURCES] The source directory containing the resources must exist' {
             Test-Path $PSScriptRoot\..\FRPSUGModule\Ressources | Should Be $true
         }
-        It '[RESSOURCES] The source directory containing the FRPSUGModule must exist' {
+        It '[RESSOURCES] The source directory containing the FRPSUGModuleTemplate must exist' {
             Test-Path $ModuleTemplatePath | Should Be $true
         }
     }

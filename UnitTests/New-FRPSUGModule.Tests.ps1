@@ -1,3 +1,4 @@
+Remove-Module FRPSUGModule -Force -ErrorAction SilentlyContinue
 Import-Module -Force $PSScriptRoot\..\FRPSUGModule\FRPSUGModule.psm1
 
 
