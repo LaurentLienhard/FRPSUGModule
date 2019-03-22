@@ -1,5 +1,20 @@
 #region <New-FRPSUGModule>
 function New-FRPSUGModule {
+    <#
+    .SYNOPSIS
+        Creating a new module structure
+    .DESCRIPTION
+        This function allows, using a Plaster model, to generate a new module structure
+        Information for the creation of the module (name, version ...) will be requested by the template Plaster
+        This function requires having the Plaster module installed
+    .PARAMETER DestinationPath
+        The directory path in which the new module will be created
+    .EXAMPLE
+        PS C:\> New-FRPSUGModule -DestinationPath $env:TEMP
+        This command will create a new module in the Temp directory of the user
+    .NOTES
+        General notes
+    #>
     [CmdletBinding(SupportsShouldProcess)]
     param (
         [ValidateScript( {Test-Path $_})]
