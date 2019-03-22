@@ -21,28 +21,28 @@ New-Item -Path $ExportPath -ItemType File -Force
 
 Write-Output "[BUILD][Code] Loading Enums, Class, public and private functions"
 
- $MainPSM1Contents = @()
+$MainPSM1Contents = @()
 
- if (Test-Path -Path "$CodeSourcePath\Enums\") {
-     $PublicEnums = Get-ChildItem -Path "$CodeSourcePath\Enums\" -Filter *.ps1 | sort-object Name
-     $MainPSM1Contents += $PublicEnums
- }
- If (Test-Path -Path "$CodeSourcePath\Classes\") {
-     $PublicClasses = Get-ChildItem -Path "$CodeSourcePath\Classes\" -Filter *.ps1 | sort-object Name
-     $MainPSM1Contents += $PublicClasses
- }
- If (Test-Path -Path "$CodeSourcePath\Functions\Private") {
-     $PrivateFunctions = Get-ChildItem -Path "$CodeSourcePath\Functions\Private" -Filter *.ps1 | sort-object Name
-     $MainPSM1Contents += $PrivateFunctions
- }
- If (Test-Path -Path "$CodeSourcePath\Functions\Public") {
-     $PublicFunctions = Get-ChildItem -Path "$CodeSourcePath\Functions\Public" -Filter *.ps1 | sort-object Name
-     $MainPSM1Contents += $PublicFunctions
- }
- 
- if ($MainPSM1Contents.Count -eq 0 ) {
-     Write-error "No source file found to compile Module"
- }
+if (Test-Path -Path "$CodeSourcePath\Enums\") {
+    $PublicEnums = Get-ChildItem -Path "$CodeSourcePath\Enums\" -Filter *.ps1 | sort-object Name
+    $MainPSM1Contents += $PublicEnums
+}
+If (Test-Path -Path "$CodeSourcePath\Classes\") {
+    $PublicClasses = Get-ChildItem -Path "$CodeSourcePath\Classes\" -Filter *.ps1 | sort-object Name
+    $MainPSM1Contents += $PublicClasses
+}
+If (Test-Path -Path "$CodeSourcePath\Functions\Private") {
+    $PrivateFunctions = Get-ChildItem -Path "$CodeSourcePath\Functions\Private" -Filter *.ps1 | sort-object Name
+    $MainPSM1Contents += $PrivateFunctions
+}
+If (Test-Path -Path "$CodeSourcePath\Functions\Public") {
+    $PublicFunctions = Get-ChildItem -Path "$CodeSourcePath\Functions\Public" -Filter *.ps1 | sort-object Name
+    $MainPSM1Contents += $PublicFunctions
+}
+
+if ($MainPSM1Contents.Count -eq 0 ) {
+    Write-error "No source file found to compile Module"
+}
 
 #Creating PSM1
 Write-Output "[BUILD][START][MAIN PSM1] Building main PSM1"
@@ -65,5 +65,17 @@ if ($null -ne $FunctionsToExport) {
 }
 
 Write-Output "[BUILD][END][MAIN PSM1] building main PSM1 "
+
+Write-Output "[BUILD][START][RESSOURCES] Add ressources to Module "
+$RessourcesList = Get-ChildItem -Path $CodeSourcePath\Ressources
+
+foreach ($ressources in $RessourcesList) {
+    $RessourcesPath = $CodeSourcePath + "\Ressources\" + $ressources.Name
+    $DestinationPath = $ModuleFolderPath + "\Ressources\" + $ressources.Name
+    Copy-Item -Path $RessourcesPath -Destination $DestinationPath -Force -Recurse -Confirm:$false
+}
+
+
+Write-Output "[BUILD][END][RESSOURCES] Add ressources to Module "
 
 Write-Output "[BUILD][END]End of Build Process"
