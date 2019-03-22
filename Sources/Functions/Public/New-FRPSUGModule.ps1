@@ -1,14 +1,15 @@
 #region <New-FRPSUGModule>
 function New-FRPSUGModule {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param (
+        [ValidateScript( {Test-Path $_})]
         [String]$DestinationPath
     )
 
     begin {
         $Current = $PSScriptRoot
-        $Root = ((Get-Item $Current).Parent).FullName
         $TemplatePath = $Current + "\Ressources\FRPSUGModuleTemplate"
+        Write-Verbose "The Template Path use is : $TemplatePath"
     }
 
     process {
