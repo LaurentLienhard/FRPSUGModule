@@ -6,4 +6,8 @@ This module will contain all the resources developed for the French Powershell U
 
 The first function of the module will be New-FRPSUGModule.
 
-This function will create a new module based on a template defined with the help of members of the French Powershell User Group
+This function allows, using a Plaster model, to generate a new module structure.
+
+Information for the creation of the module (name, version ...) will be requested by the template Plaster 
+
+This function requires having the Plaster module installed
