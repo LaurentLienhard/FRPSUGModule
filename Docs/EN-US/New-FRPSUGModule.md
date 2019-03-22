@@ -1,7 +1,7 @@
 ---
 external help file: FRPSUGModule-help.xml
 Module Name: FRPSUGModule
-online version:
+online version: https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md
 schema: 2.0.0
 ---
 
@@ -90,3 +90,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 General notes
 
 ## RELATED LINKS
+
+[https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md)
+

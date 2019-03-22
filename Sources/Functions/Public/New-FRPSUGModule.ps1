@@ -12,6 +12,8 @@ function New-FRPSUGModule {
     .EXAMPLE
         PS C:\> New-FRPSUGModule -DestinationPath $env:TEMP
         This command will create a new module in the Temp directory of the user
+    .LINK
+        https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md
     .NOTES
         General notes
     #>
