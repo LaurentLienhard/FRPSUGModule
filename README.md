@@ -2,7 +2,7 @@
 
 This module will contain all the resources developed for the French Powershell User group
 
-## New-FRPSUGModule [[Readme](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Sources/Ressources/FRPSUGModuleTemplate/README.md) / [Doc](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md)]
+## New-FRPSUGModule [[Readme](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Sources/Ressources/FRPSUGModuleTemplate/README.md) / [Help](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md)]
 
 The first function of the module will be New-FRPSUGModule.
 
