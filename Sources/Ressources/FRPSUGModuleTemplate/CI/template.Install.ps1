@@ -2,6 +2,11 @@
 
 Write-Output "[INSTALL] Start"
 
+if (!(Get-Module -ListAvailable -Name Plaster | Where-Object { $_.Version -eq '1.1.3' })) {
+    Write-Output "[INSTALL] Plaster"
+    Install-Module -Name pester -MinimumVersion 1.1.3 -Scope CurrentUser -Force -Confirm:$false -SkipPublisherCheck
+}
+
 if (!(Get-Module -ListAvailable -Name Pester | Where-Object { $_.Version -eq '4.7.3' })) {
     Write-Output "[INSTALL] Pester"
     Install-Module -Name pester -MinimumVersion 4.7.3 -Scope CurrentUser -Force -Confirm:$false -SkipPublisherCheck
