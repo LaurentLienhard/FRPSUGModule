@@ -17,9 +17,9 @@ if (!(Get-Module -ListAvailable -Name PSDeploy | Where-Object { $_.Version -eq '
     Install-Module -Name PSDeploy -MinimumVersion 1.0.1 -Scope CurrentUser -Force -Confirm:$false
 }
 
-if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer | Where-Object { $_.Version -eq '1.17.1' })) {
+if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer | Where-Object { $_.Version -eq '1.18.0' })) {
     Write-Output "[INSTALL] PSSCriptAnalyser"
-    Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.17.1 -Scope CurrentUser -Force -Confirm:$false
+    Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.18.0 -Scope CurrentUser -Force -Confirm:$false
 }
 
 if (!(Get-Module -ListAvailable -Name PSClassUtils | Where-Object { $_.Version -eq '2.6.3' })) {
@@ -28,10 +28,10 @@ if (!(Get-Module -ListAvailable -Name PSClassUtils | Where-Object { $_.Version -
     Import-module PSClassUtils
     Install-PackageProvider -Name Chocolatey -force -Scope CurrentUser
     Register-PackageSource -Name Chocolatey -ProviderName Chocolatey -Location http://chocolatey.org/api/v2/ -Force -Trusted
-    Find-Package graphviz -Source "http://chocolatey.org/api/v2/"  | Install-Package -ForceBootstrap -Force
-    Start-Sleep -Seconds 2
+    Find-Package graphviz -Source "http://chocolatey.org/api/v2/" | Install-Package -ForceBootstrap -Force
+Start-Sleep -Seconds 2
 
-    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-    Install-Module -Name PSGraph -Force -verbose -Scope CurrentUser
+Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+Install-Module -Name PSGraph -Force -verbose -Scope CurrentUser
 }
 Write-Output "[INSTALL] End"

@@ -17,9 +17,9 @@ if (!(Get-Module -ListAvailable -Name PSDeploy | Where-Object { $_.Version -eq '
     Install-Module -Name PSDeploy -MinimumVersion 1.0.1 -Scope CurrentUser -Force -Confirm:$false
 }
 
-if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer | Where-Object { $_.Version -eq '1.17.1' })) {
+if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer | Where-Object { $_.Version -eq '1.18.0' })) {
     Write-Output "[INSTALL] PSSCriptAnalyser"
-    Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.17.1 -Scope CurrentUser -Force -Confirm:$false
+    Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.18.0 -Scope CurrentUser -Force -Confirm:$false
 }
 
 if (!(Get-Module -ListAvailable -Name PSClassUtils | Where-Object { $_.Version -eq '2.6.3' })) {

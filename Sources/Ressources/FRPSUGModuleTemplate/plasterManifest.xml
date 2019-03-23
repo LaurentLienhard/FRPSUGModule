@@ -51,8 +51,13 @@
     <choice label='&amp;No' value='No' help='No Psake support'/>
   </parameter>
 
+  <parameter name='Appveyor' type = 'choice' prompt='`r`nAdd Appveyor support' default='0'>
+    <choice label='&amp;Yes' value='Yes' help='Add Appveyor Support.'/>
+    <choice label='&amp;No' value='No' help='No Appveyor support'/>
+  </parameter>
+
   </parameters>
-  
+
   <content>
     <message>____________________________________</message>
     <message>`r`n-> Creating your root folders for module : ${PLASTER_PARAM_ModuleName}</message>
@@ -69,7 +74,7 @@
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Tests' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Docs' />
-    
+
 
     <message condition='$PLASTER_PARAM_UnitTests -eq "Yes"'>`r`n-> Creating UnitTests folder</message>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\UnitTests' condition='$PLASTER_PARAM_UnitTests -eq "Yes"' />
@@ -114,6 +119,16 @@
     <templateFile source='Tasks\template.Docs.Tasks.ps1' destination='${PLASTER_PARAM_ModuleName}\Tasks\Docs.Tasks.ps1' condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Psake -eq "Yes" '/>
     <templateFile source='Tasks\template.Tests.Tasks.ps1' destination='${PLASTER_PARAM_ModuleName}\Tasks\Tests.Tasks.ps1' condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Psake -eq "Yes" '/>
     <templateFile source='Tasks\template.Diagram.Tasks.ps1' destination='${PLASTER_PARAM_ModuleName}\Tasks\Diagram.Tasks.ps1' condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Psake -eq "Yes" '/>
+
+    <message condition='$PLASTER_PARAM_CICD -eq "No" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> Appveyor can't be create without CICD file</message>
+    <message condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> Creating Appveyor file</message>
+    <templateFile source='template.appveyor.yml' destination='${PLASTER_PARAM_ModuleName}\appveyor.yml' condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '/>
+    <message condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
+    <message condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> To add appveyor support you must:</message>
+    <message condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 1- Add your project on github (https://github.com/)</message>
+    <message condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 2-Add your Github project on Appveyor (https://www.appveyor.com/) (https://github.com/)</message>
+    <message condition='$PLASTER_PARAM_CICD -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
+
 
     <message>`r`n-> Testing require modules </message>
     <requireModule name='Pester' condition='$PLASTER_PARAM_UnitTests -eq "Yes"' minimumVersion='4.7.1' message='Without Pester, you will not be able to run the provided Pester test to validate your module manifest file.`nWithout version 3.4.0, VS Code will not display Pester warnings and errors in the Problems panel.'/>
