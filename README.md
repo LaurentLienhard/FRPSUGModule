@@ -4,6 +4,7 @@ This module will contain all the resources developed for the French Powershell U
 
 [![Build status](https://ci.appveyor.com/api/projects/status/mn6717hbpo2l54pc/branch/master?svg=true)](https://ci.appveyor.com/project/LaurentLienhard/frpsugmodule/branch/master)
 
+
 ## _New-FRPSUGModule_ [[Readme](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Sources/Ressources/FRPSUGModuleTemplate/README.md) / [Help](https://github.com/LaurentLienhard/FRPSUGModule/blob/master/Docs/EN-US/New-FRPSUGModule.md)]
 
 The first function of the module will be New-FRPSUGModule.
