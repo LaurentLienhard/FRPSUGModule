@@ -27,6 +27,11 @@ if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer | Where-Object { $_.Versi
     Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.18.0 -Scope CurrentUser -Force -Confirm:$false
 }
 
+if (!(Get-Module -ListAvailable -Name BuildHelpers | Where-Object { $_.Version -eq '2.0.8' })) {
+    Write-Output "[INSTALL] Plaster"
+    Install-Module -Name pester -MinimumVersion 2.0.8 -Scope CurrentUser -Force -Confirm:$false
+}
+
 if (!(Get-Module -ListAvailable -Name PSClassUtils | Where-Object { $_.Version -eq '2.6.3' })) {
     Write-Output "[INSTALL] PSClassUtils"
     Install-Module -Name PSClassUtils -MinimumVersion 2.6.3 -Scope CurrentUser -Force -Confirm:$false
