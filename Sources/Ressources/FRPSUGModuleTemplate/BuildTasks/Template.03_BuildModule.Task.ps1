@@ -27,7 +27,7 @@ task BuildModule {
             $DestinationPath = $ModuleFolderPath + "\Ressources\" + $ressources.Name
             Copy-Item -Path $RessourcesPath -Destination $DestinationPath -Force -Recurse -Confirm:$false
         }
-        Write-Output "[BUILDMODULE] All ressoures add to Module "
+        Write-Output "[BUILDMODULE] All ressources add to Module "
     }
 
 
