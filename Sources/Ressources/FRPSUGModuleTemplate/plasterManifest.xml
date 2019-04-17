@@ -47,17 +47,6 @@
     <choice label='&amp;No' value='No' help='No BuildTasks support'/>
   </parameter>
 
-<!--   <parameter name='CICD' type = 'choice' prompt='`r`nAdd support for CI/CD' default='0'>
-    <choice label='&amp;Yes' value='Yes' help='Add CI/CD Support.'/>
-    <choice label='&amp;No' value='No' help='No CI/CD support'/>
-  </parameter>
-
-  <parameter name='Psake' type = 'choice' prompt='`r`nAdd support for Psake' default='0'>
-    <choice label='&amp;Yes' value='Yes' help='Add Psake Support.'/>
-    <choice label='&amp;No' value='No' help='No Psake support'/>
-  </parameter>
- -->
-
   <parameter name='Appveyor' type = 'choice' prompt='`r`nAdd Appveyor support' default='0'>
     <choice label='&amp;Yes' value='Yes' help='Add Appveyor Support.'/>
     <choice label='&amp;No' value='No' help='No Appveyor support'/>
@@ -80,7 +69,8 @@
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Classes' condition='$PLASTER_PARAM_ModuleFolders -contains "Classes"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Ressources' condition='$PLASTER_PARAM_ModuleFolders -contains "Ressources"' />
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Tests' />
+    <message condition='$PLASTER_PARAM_BuildTaks -eq "No"'>`r`n-> Add PSM1 file</message>
+    <templateFile source='ModuleName.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' condition='$PLASTER_PARAM_BuildTasks -eq "No"'/>
 
     <message condition='$PLASTER_PARAM_UnitTests -eq "Yes"'>`r`n-> Creating UnitTests folder</message>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\UnitTests' condition='$PLASTER_PARAM_UnitTests -eq "Yes"' />
