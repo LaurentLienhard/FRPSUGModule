@@ -2,16 +2,9 @@ version: 1.0.{build}
 image: Visual Studio 2017
 environment:
   APPVEYOR_RDP_PASSWORD: Passw0rd
-install:
-- ps: >-
-    ./CI/Install.ps1
 build_script:
 - ps: >-
-    ./CI/Clean.ps1
-
-    ./CI/Compile.ps1
-test_script:
-- ps: ./CI/Tests.ps1
+    ./Build.ps1 -Tasks Default -verbose
 artifacts:
 - path: .\<%= $PLASTER_PARAM_ModuleName %>
   name: <%= $PLASTER_PARAM_ModuleName %>
