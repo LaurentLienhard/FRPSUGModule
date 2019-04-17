@@ -31,11 +31,8 @@ Describe 'Test Function New-FRPSUGModule' {
         It '[FRPSUGModuletemplate] The Plaster Manifest file must exist' {
             Test-Path $ModuleTemplatePath\plasterManifest.xml | Should Be $true
         }
-        It '[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain CI folder with all files' {
-            Test-Path $ModuleTemplatePath\CI | Should Be $true
-        }
-        It '[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain Tasks folder with all files' {
-            Test-Path $ModuleTemplatePath\Tasks | Should Be $true
+        It '[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain BuildTasks folder with all files' {
+            Test-Path $ModuleTemplatePath\BuildTasks | Should Be $true
         }
         It '[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain UnitTests folder with all files' {
             Test-Path $ModuleTemplatePath\UnitTests | Should Be $true
