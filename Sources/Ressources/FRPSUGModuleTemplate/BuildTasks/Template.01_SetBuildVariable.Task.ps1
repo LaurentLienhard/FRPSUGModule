@@ -14,7 +14,7 @@ task SetBuildVariable {
     Write-Verbose "[SETBUILDVARIABLE] Output Module Build path $($script:OutputModulePath)"
 
     #USE IN 03_BuildModule
-    $script:Author = "${PLASTER_PARAM_AuthorName}"
+    $script:Author = "<%= $PLASTER_PARAM_AuthorName %>"
     Write-Verbose "[SETBUILDVARIABLE] Author $($script:Author)"
 
     #USE IN 03_BuildModule
