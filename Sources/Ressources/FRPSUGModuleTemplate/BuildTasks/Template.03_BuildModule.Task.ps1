@@ -18,16 +18,19 @@ task BuildModule {
         Get-Content $File.FullName | Out-File -FilePath $Script:ModuleBuildPsm1 -Encoding utf8 -Append
     }
 
-    Write-Output "[BUILD][START][RESSOURCES] Add ressources to Module "
-    $RessourcesList = Get-ChildItem -Path $CodeSourcePath\Ressources
+    if (Test-Path -Path "$CodeSourcePath\Ressources") {
+        Write-Output "[BUILDMODULE] Add ressources to Module "
+        $RessourcesList = Get-ChildItem -Path $CodeSourcePath\Ressources
 
-    foreach ($ressources in $RessourcesList) {
-        $RessourcesPath = $CodeSourcePath + "\Ressources\" + $ressources.Name
-        $DestinationPath = $ModuleFolderPath + "\Ressources\" + $ressources.Name
-        Copy-Item -Path $RessourcesPath -Destination $DestinationPath -Force -Recurse -Confirm:$false
+        foreach ($ressources in $RessourcesList) {
+            $RessourcesPath = $CodeSourcePath + "\Ressources\" + $ressources.Name
+            $DestinationPath = $ModuleFolderPath + "\Ressources\" + $ressources.Name
+            Copy-Item -Path $RessourcesPath -Destination $DestinationPath -Force -Recurse -Confirm:$false
+        }
+        Write-Output "[BUILDMODULE] All ressoures add to Module "
     }
 
 
-    Write-Output "[BUILD][END][RESSOURCES] Add ressources to Module "
+
     Write-Verbose "[BUILDMODULE][END]"
 }

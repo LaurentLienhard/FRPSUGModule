@@ -4,7 +4,7 @@ environment:
   APPVEYOR_RDP_PASSWORD: Passw0rd
 build_script:
 - ps: >-
-    ./Build.ps1 -Tasks Default -verbose
+    ./Build.ps1 -Task Default -verbose
 artifacts:
-- path: .\<%= $PLASTER_PARAM_ModuleName %>
+- path: .\BuildOutput\<%= $PLASTER_PARAM_ModuleName %>
   name: <%= $PLASTER_PARAM_ModuleName %>
