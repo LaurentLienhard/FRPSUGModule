@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="17" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-17" time="16:55:59">
+  <environment user="Laurent.Lienhard" machine-name="OTHALA" cwd="C:\Users\Laurent.Lienhard\Dropbox\01-DEV\Powershell\FRPSUGModule" user-domain="NETINTRA" platform="Microsoft Windows 10 Enterprise|C:\Windows|\Device\Harddisk0\Partition2" nunit-version="2.5.8.0" os-version="10.0.17763" clr-version="4.0.30319.42000" />
+  <culture-info current-culture="fr-FR" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="2.7304" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\Laurent.Lienhard\Dropbox\01-DEV\Powershell\FRPSUGModule\UnitTests\Module.Tests.ps1" executed="True" result="Success" success="True" time="1.9403" asserts="0" description="C:\Users\Laurent.Lienhard\Dropbox\01-DEV\Powershell\FRPSUGModule\UnitTests\Module.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Module" executed="True" result="Success" success="True" time="1.7542" asserts="0" description="Module">
+            <results>
+              <test-suite type="TestFixture" name="Manifest" executed="True" result="Success" success="True" time="1.465" asserts="0" description="Manifest">
+                <results>
+                  <test-case description="has a valid manifest" name="Module.Manifest.has a valid manifest" time="0.2371" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid name in the manifest" name="Module.Manifest.has a valid name in the manifest" time="0.1227" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid root module" name="Module.Manifest.has a valid root module" time="0.0169" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid version in the manifest" name="Module.Manifest.has a valid version in the manifest" time="0.0312" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid description" name="Module.Manifest.has a valid description" time="0.0175" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid author" name="Module.Manifest.has a valid author" time="0.0068" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid guid" name="Module.Manifest.has a valid guid" time="0.0288" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid copyright" name="Module.Manifest.has a valid copyright" time="0.0129" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Laurent.Lienhard\Dropbox\01-DEV\Powershell\FRPSUGModule\UnitTests\New-FRPSUGModule.Tests.ps1" executed="True" result="Success" success="True" time="0.79" asserts="0" description="C:\Users\Laurent.Lienhard\Dropbox\01-DEV\Powershell\FRPSUGModule\UnitTests\New-FRPSUGModule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Testing if Parameter's Function are available: 'New-FRPSUGModule'" executed="True" result="Success" success="True" time="0.1313" asserts="0" description="Testing if Parameter's Function are available: 'New-FRPSUGModule'">
+            <results>
+              <test-case description="[Function][Parameter] The TemplateName parameter should be available." name="Testing if Parameter's Function are available: 'New-FRPSUGModule'.[Function][Parameter] The TemplateName parameter should be available." time="0.0208" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="[Function][Parameter] The DestinationPath parameter should be available." name="Testing if Parameter's Function are available: 'New-FRPSUGModule'.[Function][Parameter] The DestinationPath parameter should be available." time="0.0258" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Test Function New-FRPSUGModule" executed="True" result="Success" success="True" time="0.4783" asserts="0" description="Test Function New-FRPSUGModule">
+            <results>
+              <test-suite type="TestFixture" name="FRPSUGModuletemplate" executed="True" result="Success" success="True" time="0.236" asserts="0" description="FRPSUGModuletemplate">
+                <results>
+                  <test-case description="[FRPSUGModuletemplate] The Plaster Manifest file must exist" name="Test Function New-FRPSUGModule.FRPSUGModuletemplate.[FRPSUGModuletemplate] The Plaster Manifest file must exist" time="0.0151" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain BuildTasks folder with all files" name="Test Function New-FRPSUGModule.FRPSUGModuletemplate.[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain BuildTasks folder with all files" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain UnitTests folder with all files" name="Test Function New-FRPSUGModule.FRPSUGModuletemplate.[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain UnitTests folder with all files" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain Github folder with all files" name="Test Function New-FRPSUGModule.FRPSUGModuletemplate.[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain Github folder with all files" time="0.0167" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain Vscode folder with all files" name="Test Function New-FRPSUGModule.FRPSUGModuletemplate.[FRPSUGModuletemplate] The FRPSUGModuleTemplate path must contain Vscode folder with all files" time="0.0182" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="FRPSUGGithubPostTemplate" executed="True" result="Success" success="True" time="0.168" asserts="0" description="FRPSUGGithubPostTemplate">
+                <results>
+                  <test-case description="[FRPSUGGithubPostTemplate] The Plaster Manifest file must exist" name="Test Function New-FRPSUGModule.FRPSUGGithubPostTemplate.[FRPSUGGithubPostTemplate] The Plaster Manifest file must exist" time="0.008" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="[FRPSUGGithubPostTemplate] The template file must exist" name="Test Function New-FRPSUGModule.FRPSUGGithubPostTemplate.[FRPSUGGithubPostTemplate] The template file must exist" time="0.0295" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

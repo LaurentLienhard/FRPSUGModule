@@ -1,3 +1,4 @@
+﻿#Generated at 04/17/2019 16:55:47 by Laurent LIENHARD
 #region <New-FRPSUGModule>
 function New-FRPSUGModule {
     <#
