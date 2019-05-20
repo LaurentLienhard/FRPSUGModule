@@ -1,3 +1,0 @@
-## FRPSUGModuleTemplate
-
-This template is
