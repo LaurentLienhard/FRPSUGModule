@@ -1,4 +1,4 @@
-/<%= $PLASTER_PARAM_ModuleName %>
+/BuildOuput/*
 TestsResults.xml
 /Tests
 /Tests/*

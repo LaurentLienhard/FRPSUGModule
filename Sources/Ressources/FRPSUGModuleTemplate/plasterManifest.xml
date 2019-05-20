@@ -110,7 +110,7 @@
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> To add appveyor support you must:</message>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 1- Add your project on github (https://github.com/)</message>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 2-Add your Github project on Appveyor (https://www.appveyor.com/) (https://github.com/)</message>
+    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 2-Add your Github project on Appveyor (https://www.appveyor.com/)</message>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
 
     <message>`r`n-> Testing require modules </message>
