@@ -92,7 +92,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking build scripts...'; ${workspaceFolder}/Build.ps1 -task build -verbose",
+            "command": "Write-Host 'Invoking build scripts...'; '${workspaceFolder}/Build.ps1 -task build -verbose'",
             "problemMatcher": []
         },
         {

@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [parameter(Position = 0)]
-    $Task = 'Default'
+    $Task = 'build'
 )
 
 Clear-Host
