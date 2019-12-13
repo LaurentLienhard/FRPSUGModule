@@ -1,5 +1,6 @@
 #region <New-FRPSUGModule>
-function New-FRPSUGModule {
+function New-FRPSUGModule
+{
     <#
     .SYNOPSIS
         Creating a new module structure
@@ -25,17 +26,20 @@ function New-FRPSUGModule {
         [String]$DestinationPath
     )
 
-    begin {
+    begin
+    {
         $Current = $PSScriptRoot
         $TemplatePath = $Current + "\Ressources\" + $TemplateName
         Write-Verbose "The Template Path use is : $TemplatePath"
     }
 
-    process {
+    process
+    {
         Invoke-Plaster -TemplatePath $TemplatePath -DestinationPath $DestinationPath
     }
 
-    end {
+    end
+    {
     }
 }
 #endregion
