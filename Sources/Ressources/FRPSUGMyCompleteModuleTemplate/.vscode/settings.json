@@ -1,0 +1,36 @@
+{
+  "files.defaultLanguage": "powershell",
+  "powershell.powerShellExePath": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+  "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+  "powershell.startAutomatically": true,
+  "powershell.scriptAnalysis.enable": true,
+  "powershell.integratedConsole.showOnStartup": true,
+  "powershell.codeFormatting.preset": "Custom",
+  "powershell.codeFormatting.openBraceOnSameLine": false,
+  "powershell.codeFormatting.newLineAfterOpenBrace": true,
+  "powershell.codeFormatting.newLineAfterCloseBrace": true,
+  "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+  "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+  "powershell.codeFormatting.whitespaceAroundOperator": true,
+  "powershell.codeFormatting.whitespaceAfterSeparator": true,
+  "powershell.codeFormatting.ignoreOneLineBlock": false,
+  "files.trimTrailingWhitespace": true,
+  "[powershell]": {
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
+  },
+  "[json]": {
+    // Number of spaces for tabs
+    "editor.tabSize": 2
+  },
+  "files.associations": {
+    "*.ps1xml": "xml"
+  },
+  "editor.tabSize": 4,
+  "cSpell.language": "en,fr",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "files.encoding": "utf8bom",
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1"
+}
