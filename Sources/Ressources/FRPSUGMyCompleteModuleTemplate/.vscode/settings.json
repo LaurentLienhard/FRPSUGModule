@@ -1,7 +1,6 @@
 {
   "files.defaultLanguage": "powershell",
-  "powershell.powerShellExePath": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
-  "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+  //"terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
   "powershell.startAutomatically": true,
   "powershell.scriptAnalysis.enable": true,
   "powershell.integratedConsole.showOnStartup": true,
@@ -25,12 +24,24 @@
   "files.associations": {
     "*.ps1xml": "xml"
   },
+  "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1",
   "editor.tabSize": 4,
-  "cSpell.language": "en,fr",
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
   "files.encoding": "utf8bom",
   "git.enableSmartCommit": true,
   "git.autofetch": true,
-  "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1"
+  "cSpell.language": "en,en-US,fr,fr-FR",
+  "cSpell.enabledLanguageIds": [
+    "git-commit",
+    "git-rebase",
+    "json",
+    "markdown",
+    "powershell",
+    "yaml",
+    "yml",
+    "azure-pipelines",
+    "jsonc"
+  ],
 }
