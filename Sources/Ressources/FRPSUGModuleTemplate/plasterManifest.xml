@@ -37,21 +37,28 @@
     <choice label='&amp;None' help='No editor specified.' value='None'/>
   </parameter>
 
-  <parameter name='Github' type = 'choice' prompt='`r`nAdd support for Github' default='0'>
-    <choice label='&amp;Yes' value='Yes' help='Add Github Folder.'/>
-    <choice label='&amp;No' value='No' help='No Github support'/>
-  </parameter>
-
-  <parameter name='BuildTasks' type = 'choice' prompt='`r`nAdd Build Files for CI/CD support' default='0'>
-    <choice label='&amp;Yes' value='Yes' help='Add BuildTasks Support.'/>
-    <choice label='&amp;No' value='No' help='No BuildTasks support'/>
-  </parameter>
-
-  <parameter name='Appveyor' type = 'choice' prompt='`r`nAdd Appveyor support' default='0'>
-    <choice label='&amp;Yes' value='Yes' help='Add Appveyor Support.'/>
-    <choice label='&amp;No' value='No' help='No Appveyor support'/>
-  </parameter>
-
+  <!-- CI/CD -->
+    <parameter name='CICD'
+               type='choice'
+               default='2'
+               store='text'
+               prompt='Do you want to include CI/CD support?'>
+      <choice label='&amp;AppVeyor'
+              help='Adds an AppVeyor yaml file.'
+              value="AppVeyor"/>
+      <choice label='Azure &amp;Pipelines'
+              help='Adds an Azure Pipelines yaml file.'
+              value='AzurePipelines'/>
+    <choice label='Git&amp;Hub Actions'
+              help='Adds a GitHub Actions workflow file.'
+              value='GitHubActions'/>
+      <choice label='&amp;GitLab CI'
+              help='Adds a GitLab CI yaml file.'
+              value='GitLabCI'/>
+      <choice label='&amp;None'
+              help='No license specified.'
+              value='None'/>
+    </parameter>
   </parameters>
 
   <content>
@@ -65,17 +72,35 @@
 
     <message>`r`n-> Creating your source code folders </message>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Private' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"' />
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Private\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"' />
+    <file source='github\gitkeep' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Private\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Public' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"'/>
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Public\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"'/>
+    <file source='github\gitkeep' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Public\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"'/>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Classes' condition='$PLASTER_PARAM_ModuleFolders -contains "Classes"' />
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Classes\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Classes"' />
+    <file source='github\gitkeep' destination='${PLASTER_PARAM_ModuleName}\Sources\Classes\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Classes"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
+    <file source='github\gitkeep' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Ressources' condition='$PLASTER_PARAM_ModuleFolders -contains "Ressources"' />
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Ressources\Ressource1\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Ressources"' />
-    <message condition='$PLASTER_PARAM_BuildTaks -eq "No"'>`r`n-> Add PSM1 file</message>
-    <templateFile source='ModuleName.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' condition='$PLASTER_PARAM_BuildTasks -eq "No"'/>
+    <file source='github\gitkeep' destination='${PLASTER_PARAM_ModuleName}\Sources\Ressources\Ressource1\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Ressources"' />
+
+    <message>`r`n-> Creating your github files </message>
+    <templateFile source='github\template.gitignore' destination='${PLASTER_PARAM_ModuleName}\.gitignore'/>
+
+    <message>`r`n-> Creating BuildTasks Folder </message>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\BuildTasks'/>
+    <message>`r`n-> Add BuildTasks Scripts</message>
+    <templateFile source='BuildTasks\template.01_SetBuildVariable.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\01_SetBuildVariable.Task.ps1'/>
+    <templateFile source='BuildTasks\template.02_Clean.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\02_Clean.Task.ps1'/>
+    <templateFile source='BuildTasks\template.03_BuildModule.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\03_BuildModule.Task.ps1'/>
+    <templateFile source='BuildTasks\template.04_BuildManifest.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\04_BuildManifest.Task.ps1'/>
+    <templateFile source='BuildTasks\template.05_GenerateMarkdown.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\05_GenerateMarkdown.Task.ps1'/>
+    <templateFile source='BuildTasks\template.06_GenerateHelp.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\06_GenerateHelp.Task.ps1'/>
+    <templateFile source='BuildTasks\template.07_Analyse.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\07_Analyse.Task.ps1'/>
+    <templateFile source='BuildTasks\template.08_ImportModule.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\08_ImportModule.Task.ps1'/>
+    <templateFile source='BuildTasks\template.09_UnitTests.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\09_UnitTests.Task.ps1'/>
+    <templateFile source='template.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\Build.ps1' />
+    <templateFile source='template.requirements.psd1' destination='${PLASTER_PARAM_ModuleName}\requirements.psd1'/>
+    <templateFile source='ModuleName.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.Build.ps1' />
+
 
     <message condition='$PLASTER_PARAM_UnitTests -eq "Yes"'>`r`n-> Creating UnitTests folder</message>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\UnitTests' condition='$PLASTER_PARAM_UnitTests -eq "Yes"' />
@@ -88,36 +113,18 @@
     <file source='vscode\settings.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\settings.json' condition='$PLASTER_PARAM_Editor -eq "VSCode"' />
     <file source='vscode\launch.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\launch.json' condition='$PLASTER_PARAM_Editor -eq "VSCode"' />
     <file source='vscode\PSScriptAnalyzerSettings.psd1' destination='${PLASTER_PARAM_ModuleName}\.vscode\PSScriptAnalyzerSettings.psd1' condition='$PLASTER_PARAM_Editor -eq "VSCode"' />
-    <templateFile source='vscode\tasks.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\tasks.json' condition='($PLASTER_PARAM_Editor -eq "VSCode")' />
+    <templateFile source='vscode\tasks_BuildTasks.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\tasks.json' condition='$PLASTER_PARAM_Editor -eq "VSCode"' />
 
-    <message condition='$PLASTER_PARAM_Github -eq "Yes"'>`r`n-> Creating Github Ressources</message>
-    <templateFile source='github\template.gitignore' destination='${PLASTER_PARAM_ModuleName}\.gitignore' condition='$PLASTER_PARAM_Github -eq "Yes"'/>
+    <message condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'>`r`n-> Creating Appveyor file</message>
+    <templateFile source='CICD\template.appveyor.yml' destination='${PLASTER_PARAM_ModuleName}\appveyor.yml' condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'/>
+    <message condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'>____________________________________</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'>`r`n-> To add appveyor support you must:</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'>`r`n-> 1- Add your project on github (https://github.com/)</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'>`r`n-> 2-Add your Github project on Appveyor (https://www.appveyor.com/)</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "AppVeyor"'>____________________________________</message>
 
-    <message condition='$PLASTER_PARAM_BuildTaks -eq "Yes"'>`r`n-> Creating BuildTasks Folder</message>
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\BuildTasks' condition='$PLASTER_PARAM_BuildTaks -eq "Yes"' />
-    <message condition='$PLASTER_PARAM_BuildTaks -eq "Yes"'>`r`n-> Add BuildTasks Scripts</message>
-    <templateFile source='BuildTasks\template.01_SetBuildVariable.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\01_SetBuildVariable.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.02_Clean.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\02_Clean.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.03_BuildModule.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\03_BuildModule.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.04_BuildManifest.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\04_BuildManifest.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.05_GenerateMarkdown.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\05_GenerateMarkdown.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.06_GenerateHelp.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\06_GenerateHelp.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.07_Analyse.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\07_Analyse.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.08_ImportModule.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\08_ImportModule.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='BuildTasks\template.09_UnitTests.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\09_UnitTests.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='template.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\Build.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='template.requirements.psd1' destination='${PLASTER_PARAM_ModuleName}\requirements.psd1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='ModuleName.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.Build.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='vscode\tasks_BuildTasks.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\tasks.json' condition='$PLASTER_PARAM_Editor -eq "VSCode" -and $PLASTER_PARAM_BuildTasks -eq "Yes"' />
-
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "No" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> Appveyor can't be create without CICD file</message>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> Creating Appveyor file</message>
-    <templateFile source='CICD\template.appveyor.yml' destination='${PLASTER_PARAM_ModuleName}\appveyor.yml' condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '/>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> To add appveyor support you must:</message>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 1- Add your project on github (https://github.com/)</message>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 2-Add your Github project on Appveyor (https://www.appveyor.com/)</message>
-    <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>`r`n-> Creating Github Actions File</message>
+    <file source='CICD\main.yaml' destination='${PLASTER_PARAM_ModuleName}\.github\workflows\main.yaml' condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'/>
 
     <message>`r`n-> Testing require modules </message>
     <requireModule name='Pester' condition='$PLASTER_PARAM_UnitTests -eq "Yes"' minimumVersion='4.7.1' message='Without Pester, you will not be able to run the provided Pester test to validate your module manifest file.`nWithout version 3.4.0, VS Code will not display Pester warnings and errors in the Problems panel.'/>
