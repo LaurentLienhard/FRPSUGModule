@@ -112,7 +112,7 @@
 
     <message condition='$PLASTER_PARAM_BuildTasks -eq "No" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> Appveyor can't be create without CICD file</message>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> Creating Appveyor file</message>
-    <templateFile source='template.appveyor.yml' destination='${PLASTER_PARAM_ModuleName}\appveyor.yml' condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '/>
+    <templateFile source='CICD\template.appveyor.yml' destination='${PLASTER_PARAM_ModuleName}\appveyor.yml' condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '/>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>____________________________________</message>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> To add appveyor support you must:</message>
     <message condition='$PLASTER_PARAM_BuildTasks -eq "Yes" -and $PLASTER_PARAM_Appveyor -eq "Yes" '>`r`n-> 1- Add your project on github (https://github.com/)</message>
