@@ -65,10 +65,15 @@
 
     <message>`r`n-> Creating your source code folders </message>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Private' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"' />
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Private\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Public' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Functions\Public\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "functions"'/>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Classes' condition='$PLASTER_PARAM_ModuleFolders -contains "Classes"' />
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Classes\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Classes"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Enums\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Enums"' />
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Ressources' condition='$PLASTER_PARAM_ModuleFolders -contains "Ressources"' />
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Sources\Ressources\Ressource1\.gitkeep' condition='$PLASTER_PARAM_ModuleFolders -contains "Ressources"' />
     <message condition='$PLASTER_PARAM_BuildTaks -eq "No"'>`r`n-> Add PSM1 file</message>
     <templateFile source='ModuleName.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' condition='$PLASTER_PARAM_BuildTasks -eq "No"'/>
 
@@ -101,7 +106,7 @@
     <templateFile source='BuildTasks\template.08_ImportModule.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\08_ImportModule.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='BuildTasks\template.09_UnitTests.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\09_UnitTests.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='template.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\Build.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
-    <templateFile source='template.requirements.psd1' destination='${PLASTER_PARAM_ModuleName}requirements.psd1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
+    <templateFile source='template.requirements.psd1' destination='${PLASTER_PARAM_ModuleName}\requirements.psd1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='ModuleName.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.Build.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='vscode\tasks_BuildTasks.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\tasks.json' condition='$PLASTER_PARAM_Editor -eq "VSCode" -and $PLASTER_PARAM_BuildTasks -eq "Yes"' />
 
