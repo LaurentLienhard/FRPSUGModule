@@ -101,6 +101,7 @@
     <templateFile source='BuildTasks\template.08_ImportModule.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\08_ImportModule.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='BuildTasks\template.09_UnitTests.Task.ps1' destination='${PLASTER_PARAM_ModuleName}\BuildTasks\09_UnitTests.Task.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='template.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\Build.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
+    <templateFile source='template.requirements.psd1' destination='${PLASTER_PARAM_ModuleName}requirements.psd1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='ModuleName.Build.ps1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.Build.ps1' condition='$PLASTER_PARAM_BuildTasks -eq "Yes"'/>
     <templateFile source='vscode\tasks_BuildTasks.json' destination='${PLASTER_PARAM_ModuleName}\.vscode\tasks.json' condition='$PLASTER_PARAM_Editor -eq "VSCode" -and $PLASTER_PARAM_BuildTasks -eq "Yes"' />
 
