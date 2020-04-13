@@ -20,10 +20,14 @@ function New-FRPSUGModule
     #>
     [CmdletBinding(SupportsShouldProcess)]
     param (
+        [Parameter(Position = 0, Mandatory = $true)]
         [ValidateSet("FRPSUGModuleTemplate")]
         [string]$TemplateName,
+        [Parameter(Position = 2, Mandatory = $true)]
         [ValidateScript( { Test-Path $_ })]
-        [String]$DestinationPath
+        [String]$DestinationPath,
+        [Parameter(Position = 3)]
+        [System.Collections.Hashtable]$Params
     )
 
     begin
@@ -35,7 +39,19 @@ function New-FRPSUGModule
 
     process
     {
-        Invoke-Plaster -TemplatePath $TemplatePath -DestinationPath $DestinationPath
+        if ($PSBoundParameters['Params'])
+        {
+            $Params.Add('TemplatePath', $TemplatePath)
+            $Params.Add('DestinationPath', $DestinationPath)
+        }
+        else
+        {
+            $Params = @{
+                TemplatePath    = $TemplatePath
+                DestinationPath = $DestinationPath
+            }
+        }
+        Invoke-Plaster @Params
     }
 
     end

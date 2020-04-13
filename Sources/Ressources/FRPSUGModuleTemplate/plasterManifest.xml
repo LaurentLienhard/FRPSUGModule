@@ -38,26 +38,10 @@
   </parameter>
 
   <!-- CI/CD -->
-    <parameter name='CICD'
-               type='choice'
-               default='2'
-               store='text'
-               prompt='Do you want to include CI/CD support?'>
-      <choice label='&amp;AppVeyor'
-              help='Adds an AppVeyor yaml file.'
-              value="AppVeyor"/>
-      <choice label='Azure &amp;Pipelines'
-              help='Adds an Azure Pipelines yaml file.'
-              value='AzurePipelines'/>
-    <choice label='Git&amp;Hub Actions'
-              help='Adds a GitHub Actions workflow file.'
-              value='GitHubActions'/>
-      <choice label='&amp;GitLab CI'
-              help='Adds a GitLab CI yaml file.'
-              value='GitLabCI'/>
-      <choice label='&amp;None'
-              help='No license specified.'
-              value='None'/>
+    <parameter name='CICD' type='choice' default='1' store='text' prompt='Do you want to include CI/CD support?'>
+      <choice label='&amp;AppVeyor' help='Adds an AppVeyor yaml file.' value="AppVeyor"/>
+      <choice label='Git&amp;Hub Actions' help='Adds a GitHub Actions workflow file.' value='GitHubActions'/>
+      <choice label='&amp;None'  help='No CICD.'  value='None'/>
     </parameter>
   </parameters>
 
