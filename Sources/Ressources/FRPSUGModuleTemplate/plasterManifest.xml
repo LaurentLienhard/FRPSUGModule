@@ -125,6 +125,11 @@
 
     <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>`r`n-> Creating Github Actions File</message>
     <file source='CICD\main.yaml' destination='${PLASTER_PARAM_ModuleName}\.github\workflows\main.yaml' condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'/>
+    <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>____________________________________</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>`r`n-> To add Github Actions you must create a DEV branch on your repository </message>
+    <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>`r`n-> after a commit github actions launch</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>`r`n-> 1- Pester test on Ubuntu,Windows and Mac on DEV branch</message>
+    <message condition='$PLASTER_PARAM_CICD -contains "GitHubActions"'>`r`n-> 2- If Pester Tests is Ok => Merge DEV on MASTER branch automatically</message>
 
     <message>`r`n-> Testing require modules </message>
     <requireModule name='Pester' condition='$PLASTER_PARAM_UnitTests -eq "Yes"' minimumVersion='4.7.1' message='Without Pester, you will not be able to run the provided Pester test to validate your module manifest file.`nWithout version 3.4.0, VS Code will not display Pester warnings and errors in the Problems panel.'/>
