@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - DEV
-    paths:
-      - 'UnitTests/**'
-      - 'Sources/**'
-      - '.github/workflows/*.yaml'
 
 jobs:
     Pester_Test_Job:
