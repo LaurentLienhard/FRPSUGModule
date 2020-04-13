@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - DEV
-    tags:
-      - actions
 
 jobs:
     Pester_Test_Job:
