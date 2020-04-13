@@ -17,4 +17,5 @@
     PlatyPS          = 'latest'
     PSDeploy         = 'latest'
     PSScriptAnalyzer = 'latest'
+    Plaster          = 'latest'
 }
