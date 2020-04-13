@@ -77,7 +77,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking default build scripts...'; ${workspaceFolder}/Build.ps1 -task default -bootstrap -verbose",
+            "command": "Write-Host 'Invoking default build scripts ...'; ${workspaceFolder}/Build.ps1 -task default -bootstrap -verbose",
             "problemMatcher": []
         },
         {
