@@ -1,6 +1,11 @@
-﻿name: "Launch Pester test action with job"
+﻿name: "Pester Test & Merge by Github Actions"
 
-on: [push]
+on:
+  push:
+    branches:
+      - DEV
+    tags:
+      - actions
 
 jobs:
     Pester_Test_Job:
