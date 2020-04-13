@@ -77,7 +77,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking default build scripts...'; ${workspaceFolder}/Build.ps1 -task default -verbose",
+            "command": "Write-Host 'Invoking default build scripts...'; ${workspaceFolder}/Build.ps1 -task default -bootstrap -verbose",
             "problemMatcher": []
         },
         {
@@ -92,7 +92,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking build scripts...'; '${workspaceFolder}/Build.ps1 -task build -verbose'",
+            "command": "Write-Host 'Invoking build scripts...'; ${workspaceFolder}/Build.ps1 -task build -bootstrap -verbose",
             "problemMatcher": []
         },
         {
@@ -107,7 +107,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking PSAnalyse scripts...'; ${workspaceFolder}/Build.ps1 -task PSAnalyse -verbose",
+            "command": "Write-Host 'Invoking PSAnalyse scripts...'; ${workspaceFolder}/Build.ps1 -task PSAnalyse -bootstrap -verbose",
             "problemMatcher": []
         },
         {
@@ -122,7 +122,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking UnitTests scripts...'; ${workspaceFolder}/Build.ps1 -task test -verbose",
+            "command": "Write-Host 'Invoking UnitTests scripts...'; ${workspaceFolder}/Build.ps1 -task test -bootstrap -verbose",
             "problemMatcher": []
         },
         {
@@ -137,7 +137,7 @@
                 "showReuseMessage": true,
                 "clear": true
             },
-            "command": "Write-Host 'Invoking UnitTests scripts...'; ${workspaceFolder}/Build.ps1 -task Helpify -verbose",
+            "command": "Write-Host 'Invoking UnitTests scripts...'; ${workspaceFolder}/Build.ps1 -task Helpify -bootstrap -verbose",
             "problemMatcher": []
         }
     ]

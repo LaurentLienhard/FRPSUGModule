@@ -14,15 +14,18 @@ task BuildModule {
     Write-Verbose "[BUILDMODULE] building main psm1"
     $Date = Get-Date
     "#Generated at $($Date) by $($script:Author)" | Out-File -FilePath $Script:ModuleBuildPsm1 -Encoding utf8 -Append
-    Foreach ($file in $MainPSM1Contents) {
+    Foreach ($file in $MainPSM1Contents)
+    {
         Get-Content $File.FullName | Out-File -FilePath $Script:ModuleBuildPsm1 -Encoding utf8 -Append
     }
 
-    if (Test-Path -Path "$CodeSourcePath\Ressources") {
+    if (Test-Path -Path "$CodeSourcePath\Ressources")
+    {
         Write-Output "[BUILDMODULE] Add ressources to Module "
         $RessourcesList = Get-ChildItem -Path $CodeSourcePath\Ressources
 
-        foreach ($ressources in $RessourcesList) {
+        foreach ($ressources in $RessourcesList)
+        {
             $RessourcesPath = $CodeSourcePath + "\Ressources\" + $ressources.Name
             $DestinationPath = $script:OutputModulePath + "\Ressources\" + $ressources.Name
             Copy-Item -Path $RessourcesPath -Destination $DestinationPath -Force -Recurse -Confirm:$false

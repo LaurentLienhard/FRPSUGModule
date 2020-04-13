@@ -20,7 +20,7 @@ function New-FRPSUGModule
     #>
     [CmdletBinding(SupportsShouldProcess)]
     param (
-        [ValidateSet("FRPSUGModuleTemplate", "FRPSUGGithubPostTemplate")]
+        [ValidateSet("FRPSUGModuleTemplate")]
         [string]$TemplateName,
         [ValidateScript( { Test-Path $_ })]
         [String]$DestinationPath

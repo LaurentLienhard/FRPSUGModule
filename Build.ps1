@@ -1,38 +1,32 @@
 [CmdletBinding()]
 param(
     [parameter(Position = 0)]
-    $Task = 'build'
+    $Task = 'Default',
+    # Bootstrap dependencies
+    [switch]$Bootstrap
 )
 
 Clear-Host
-$Script:ModuleInstallScope = 'CurrentUser'
-
 Write-Verbose "[BUILD][START]"
 
-Write-Verbose "[BUILD] Installing module dependencies..."
-
-Get-PackageProvider -Name 'NuGet' -ForceBootstrap | Out-Null
-
-$Script:Modules = @(
-    'BuildHelpers',
-    'InvokeBuild',
-    'Plaster',
-    'Pester',
-    'PlatyPS',
-    'PSDeploy',
-    'PSScriptAnalyzer'
-)
-
-foreach ($Module in $Script:Modules)
+# Bootstrap dependencies
+if ($Bootstrap.IsPresent)
 {
-    if (!(Get-Module -ListAvailable -Name $Module))
+    Write-Verbose "[BUILD] Installing module dependencies..."
+    Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    if ((Test-Path -Path ./requirements.psd1))
     {
-        Write-Verbose "[BUILD][INSTALL] $($Module)"
-        Install-Module -Name $Module -Scope $Script:ModuleInstallScope -Force -Confirm:$false -SkipPublisherCheck -AllowClobber
+        if (-not (Get-Module -Name PSDepend -ListAvailable))
+        {
+            Install-Module -Name PSDepend -Repository PSGallery -Scope CurrentUser -Force
+        }
+        Import-Module -Name PSDepend -Verbose:$false
+        Invoke-PSDepend -Path './requirements.psd1' -Install -Force -WarningAction SilentlyContinue
     }
     else
     {
-        Write-Verbose "[BUILD][INSTALL] $($Module) already installed"
+        Write-Warning "No [requirements.psd1] found. Skipping build dependency installation."
     }
 }
 
