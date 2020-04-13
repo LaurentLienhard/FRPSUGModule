@@ -1,6 +1,9 @@
 ﻿name: "Pester Test & Merge by Github Actions"
 
-on: [push]
+on:
+  push:
+    branches:
+      - DEV
 
 jobs:
     Pester_Test_Job:
