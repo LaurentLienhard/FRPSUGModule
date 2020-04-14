@@ -1,37 +1,39 @@
-﻿Import-Module FRPSUGModule -Force
-
-InModuleScope FRPSUGModule {
-    Describe 'Testing New-FRPSUGModule function' {
-        if ($IsWindows)
-        {
-            $DestinationPath = $env:TEMP
-        }
-        else
-        {
-            $DestinationPath = "/tmp"
-        }
+﻿
+Describe 'Testing New-FRPSUGModule function' {
+    if ($IsWindows)
+    {
+        $DestinationPath = $env:TEMP
+    }
+    else
+    {
+        $DestinationPath = "/tmp"
+    }
 
 
-        $plasterParams = @{
-            ModuleName        = 'MyTestModule'
-            ModuleDescription = 'Module For Pester Test'
-            AuthorName        = 'Author Name'
-            AuthorEmail       = "Author.Name@gmail.com"
-            ModuleVersion     = '0.0.1'
-            Company           = 'Company Name'
-            ModuleFolders     = @("functions", "Classes", "Enums", "Ressources")
-            UnitTests         = "Yes"
-            Editor            = "VSCode"
-            CICD              = "GitHubActions"
-        }
+    $plasterParams = @{
+        ModuleName        = 'MyTestModule'
+        ModuleDescription = 'Module For Pester Test'
+        AuthorName        = 'Author Name'
+        AuthorEmail       = "Author.Name@gmail.com"
+        ModuleVersion     = '0.0.1'
+        Company           = 'Company Name'
+        ModuleFolders     = @("functions", "Classes", "Enums", "Ressources")
+        UnitTests         = "Yes"
+        Editor            = "VSCode"
+        CICD              = "GitHubActions"
+    }
 
-        New-FRPSUGModule -TemplateName FRPSUGModuleTemplate -DestinationPath $DestinationPath -Params $plasterParams
+    if (Test-Path -Path ($DestinationPath + "/" + $plasterParams.ModuleName))
+    {
+        Remove-Item -Path ($DestinationPath + "/" + $plasterParams.ModuleName) -Force -Confirm:$false -Recurse
+    }
 
-        it 'Test' {
-            $true | Should Be $True
-        }
-        it 'DestinationPath should not be null' {
-            $DestinationPath | Should not be $null
-        }
+    New-FRPSUGModule -TemplateName FRPSUGModuleTemplate -DestinationPath $DestinationPath -Params $plasterParams
+
+    it 'Test' {
+        $true | Should Be $True
+    }
+    it 'DestinationPath should not be null' {
+        $DestinationPath | Should not be $null
     }
 }
