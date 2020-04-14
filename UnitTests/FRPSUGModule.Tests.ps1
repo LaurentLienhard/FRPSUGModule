@@ -30,10 +30,56 @@ Describe 'Testing New-FRPSUGModule function' {
 
     New-FRPSUGModule -TemplateName FRPSUGModuleTemplate -DestinationPath $DestinationPath -Params $plasterParams
 
-    it 'Test' {
-        $true | Should Be $True
+    it 'DestinationPath should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName) | Should Exist
     }
-    it 'DestinationPath should not be null' {
-        $DestinationPath | Should not be $null
+
+    it 'basic files should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Build.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/" + $plasterParams.ModuleName + ".Build.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/" + $plasterParams.ModuleName + ".psd1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/requirements.psd1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.gitignore") | Should Exist
+    }
+
+    it 'Sources path and subfolders should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources/Functions") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources/Functions/Private") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources/Functions/Public") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources/Classes") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources/Enums") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/Sources/Ressources") | Should Exist
+    }
+
+    it 'UnitTest path should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/UnitTests") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/UnitTests/Module.Tests.ps1") | Should Exist
+    }
+
+    it 'Vscode path and files should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.vscode") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.vscode/launch.json") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.vscode/PSScriptAnalyzerSettings.psd1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.vscode/settings.json") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.vscode/tasks.json") | Should Exist
+    }
+
+    it 'Github Actions path and file should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.github/workflows") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/.github/workflows/main.yaml") | Should Exist
+    }
+
+    it 'Buildtasks path and files should exist' {
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/01_SetBuildVariable.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/02_Clean.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/03_BuildModule.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/04_BuildManifest.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/05_GenerateMarkdown.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/06_GenerateHelp.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/07_Analyse.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/08_ImportModule.Task.ps1") | Should Exist
+        ($DestinationPath + "/" + $plasterParams.ModuleName + "/BuildTasks/09_UnitTests.Task.ps1") | Should Exist
     }
 }
