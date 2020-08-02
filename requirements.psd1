@@ -1,21 +1,18 @@
 @{
     PSDependOptions  = @{
-        Target     = 'CurrentUser'
-        Parameters = @{
-            Force = $True
-        }
+        Target = './Dependencies'
     }
 
     Pester           = @{
-        Version    = 'latest'
+        Version    = '5.0.2'
         Parameters = @{
             SkipPublisherCheck = $true
         }
     }
-    InvokeBuild      = 'latest'
-    BuildHelpers     = 'latest'
-    PlatyPS          = 'latest'
-    PSDeploy         = 'latest'
-    PSScriptAnalyzer = 'latest'
-    Plaster          = 'latest'
+    InvokeBuild      = '5.6.0'
+    BuildHelpers     = '2.0.15'
+    PlatyPS          = '0.14.0'
+    PSDeploy         = '1.0.5'
+    PSScriptAnalyzer = '1.19.1'
+    Plaster          = '1.1.3'
 }
