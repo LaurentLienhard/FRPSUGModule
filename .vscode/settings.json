@@ -43,4 +43,7 @@
     "azure-pipelines",
     "jsonc"
   ],
+  "cSpell.words": [
+    "Nuget"
+  ],
 }

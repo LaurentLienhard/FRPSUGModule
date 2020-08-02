@@ -1,6 +1,6 @@
 @{
     PSDependOptions  = @{
-        Target = './Dependencies'
+        Target = 'CurrentUser'
     }
 
     Pester           = @{

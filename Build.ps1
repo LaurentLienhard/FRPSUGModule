@@ -22,7 +22,7 @@ if ($Bootstrap.IsPresent)
             Install-Module -Name PSDepend -Repository PSGallery -Scope CurrentUser -Force
         }
         Import-Module -Name PSDepend -Verbose:$false
-        Invoke-PSDepend -Path './requirements.psd1' -Install -WarningAction SilentlyContinue
+        Invoke-PSDepend -Path './requirements.psd1' -Install -force -WarningAction SilentlyContinue
     }
     else
     {
@@ -30,15 +30,15 @@ if ($Bootstrap.IsPresent)
     }
 }
 
-Write-Verbose "[BUILD] Build Environement variable..."
+Write-Verbose "[BUILD] Build Environment variable..."
 if (!(Get-ChildItem Env:BH*))
 {
-    Write-Verbose "[BUILD] Set Build Environement variable..."
+    Write-Verbose "[BUILD] Set Build Environment variable..."
     Set-BuildEnvironment
 }
 else
 {
-    Write-Verbose "[BUILD] Build Environement variable already set.."
+    Write-Verbose "[BUILD] Build Environment variable already set.."
 }
 
 $Script:ModuleBuildFilePath = $env:BHModulePath + "\" + $env:BHProjectName + ".Build.ps1"
