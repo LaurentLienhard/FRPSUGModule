@@ -12,11 +12,11 @@
 		"ms-vscode.powershell",
 		"streetsidesoftware.code-spell-checker",
 		"adrienjoly.vscode-spellchecker-fr"
-	]
+	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Uncomment the next line to run commands after the container is created. This gets run in bash which is why we call `pwsh`.
-	// "postCreateCommand": "pwsh -c '$PSVersionTable'",
+	"postCreateCommand": "git config --global user.email 'laurent.lienhard@outlook.com' &&   git config --global user.name 'LaurentLienhard'",
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 }
